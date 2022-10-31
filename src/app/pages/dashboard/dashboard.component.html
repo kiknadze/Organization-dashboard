@@ -1,0 +1,30 @@
+<div class="dashboard-wrapper">
+    <div class="dashboard-header">
+      <div class="dashboard-header-left">
+        <div class="dashboard-header-left-counter">All organizations ({{ (organizationService.organizations$ | async)?.length }})</div>
+        <div class="dashboard-header-left-search">
+            <mat-form-field appearance="outline" class="dashboard-header-left-search-input">
+                <mat-label>Search Organization</mat-label>
+                <input matInput placeholder="Search Organization" (input)="onSearch($event)">
+                <mat-icon aria-hidden="false" aria-label="Search" fontIcon="search" matSuffix></mat-icon>
+            </mat-form-field>
+        </div>
+      </div>
+      <div class="dashboard-header-right">
+        <button 
+            class="dashboard-header-right-btn" 
+            mat-flat-button color="primary" 
+            (click)="onAdd()">
+            Add new organization
+        </button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="dashboard-list">
+      <div 
+        class="dashboard-list-item" 
+        *ngFor="let org of (organizationService.organizations$ | async) | sort: 'id'; trackBy: identify">
+        <app-org-card [org]="org"></app-org-card>
+      </div>
+    </div>
+</div>

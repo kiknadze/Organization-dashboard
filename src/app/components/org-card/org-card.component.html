@@ -1,0 +1,57 @@
+<mat-card class="org-card">
+    <div class="org-card-header">
+        <div class="org-card-header-left">
+            <img class="org-card-header-left-logo" src="{{ org.logo }}" loading="lazy" alt="Org Logo" />
+            <div class="org-card-header-left-title">
+                {{ org.title + ' ' + org.id }}
+            </div>
+        </div>
+        <div class="org-card-header-right">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button 
+                    mat-menu-item 
+                    [disabled]="opt.disabled" 
+                    *ngFor="let opt of menuOptons" 
+                    (click)="onAction(opt.id)">
+                    <mat-icon>{{ opt.icon }}</mat-icon>
+                    <span>{{ opt.name }}</span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+    <mat-divider class="org-card-divider" [inset]="true"></mat-divider>
+    <div class="org-card-body">
+        <div class="org-card-body-title">Licenses</div>
+        <div class="org-card-body-options">
+            <div class="org-card-body-options-col">
+                <div class="org-card-body-options-col-title">Tracking</div>
+                <div class="org-card-body-options-col-row">
+                    <div>In use:</div> 
+                    <div matTooltip="Internal: 840 | External: 405" matTooltipPosition="above" [ngStyle]="{color: 'red'}">
+                        1245
+                    </div>
+                </div>
+                <div class="org-card-body-options-col-row">
+                    <div>Assigned:</div> 
+                    <div><input matInput placeholder="EAssigned" value="1500" type="number"></div>
+                </div>
+            </div>
+            <div class="org-card-body-options-col">
+                <div class="org-card-body-options-col-title">Protection</div>
+                <div class="org-card-body-options-col-row">
+                    <div>In use:</div> 
+                    <div matTooltip="Internal: 840 | External: 405" matTooltipPosition="above" [ngStyle]="{color: 'green'}">
+                        1245
+                    </div>
+                </div>
+                <div class="org-card-body-options-col-row">
+                    <div>Assigned:</div> 
+                    <div><input matInput placeholder="Assigned" value="1500" type="number"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>

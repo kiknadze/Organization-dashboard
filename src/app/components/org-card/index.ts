@@ -1,0 +1,1 @@
+export * from './org-card.component';

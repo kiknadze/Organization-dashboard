@@ -1,0 +1,9 @@
+.main-content {
+    background: rgb(170, 165, 165);
+    min-height: 100%;
+    padding: 30px;
+
+    @media screen and (max-width: 600px) {
+        padding: 15px;
+    }
+}
